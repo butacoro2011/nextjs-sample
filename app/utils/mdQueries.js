@@ -33,9 +33,7 @@ export async function getAllBlogs() {
 
 //const SingleBlog = (props) => {
 export async function getSingleBlog(params) {
-	//console.log(params)
 	const { slug } = params
-	//console.log(slug)
 	const data = await import(`../../data/${slug}.md`)
 	const singleDocument = matter(data.default)
 
