@@ -1,66 +1,43 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link'
+import Image from 'next/image'
+import heroPic from "../public/images/index-hero.jpg"
+import profilePic from "../public/images/profile.jpg"
 
-export default function Home() {
+const Index = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+        <div className="hero">
+            <Image src={heroPic} alt="hero" />
+            <div className="textContainer">
+                <h1>I'm Abe Hiroki!</h1>
+                <h3>JavaScript Developer</h3>
+            </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="container">
+            <div className="profile">
+                <div>
+                    <h2>JavaScript Nerd</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div>
+                    <Image src={profilePic} alt="hero" />
+                </div>
+            </div>
+            <div className="skills">
+                <h2>Skills</h2>
+                <div className="skillsContainer">
+                    <div><img src="/images/javascript.svg" alt="javascript"/><span>JavaScript / 10 years</span></div>
+                    <div><img src="/images/react.svg"alt="react"/><span>React / 5 years</span></div>
+                    <div><img src="/images/gatsby.svg" alt="gatsby"/><span>Gatsby / 3 years</span></div>
+                    <div><img src="/images/next.svg" alt="next"/><span>Next.JS / 3 years</span></div>
+                </div>
+            </div>
+            <div className="ctaButton">
+                <Link href="/contact">Make It Happen!</Link>
+            </div>
         </div>
-      </main>
-    </div>
-  );
+    </>
+  )
 }
+
+export default Index
