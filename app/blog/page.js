@@ -1,16 +1,18 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getAllBlogs } from '../utils/mdQueries'
+import Pagination from '../components/paginations'
+import { getAllBlogs,blogsPerPage } from '../utils/mdQueries'
 
 const Blog = async() => {
-    const { blogs } = await getAllBlogs() 
+    const { blogs, numberPages } = await getAllBlogs() 
+    const limitedBlogs = blogs.slice(0, blogsPerPage)
     return (
         <>
         <div className="wrapper">
             <div className="container">   
                 <h1>Blog</h1>
                 <p>エンジニアの日常生活をお届けします</p>
-                    {blogs.map((blog, index) => 
+                    {limitedBlogs.map((blog, index) => 
                         <div key={index} className="blogCard"> 
                             <div className="cardContainer">
                                 <h2>{blog.frontmatter.title}</h2>
@@ -24,6 +26,7 @@ const Blog = async() => {
                         </div>
                     )}  
             </div>  
+            <Pagination numberPages={numberPages}/>
         </div>
         </> 
     )

@@ -2,6 +2,8 @@ import fs from "fs"
 import path from "path" 
 import matter from "gray-matter"
 
+export const blogsPerPage = 5
+
 export async function getAllBlogs() {  
 	const files = fs.readdirSync(path.join("data"))
 	const blogs = files.map((fileName) => {
@@ -20,9 +22,12 @@ export async function getAllBlogs() {
 	const orderedBlogs = blogs.sort((a, b) => {
 		return b.frontmatter.id - a.frontmatter.id
 	})
+	
+	const numberPages = Math.ceil(orderedBlogs.length / blogsPerPage)
 
 	return{
-		blogs: orderedBlogs
+		blogs: orderedBlogs,
+		numberPages: numberPages
 	}
 }
 
